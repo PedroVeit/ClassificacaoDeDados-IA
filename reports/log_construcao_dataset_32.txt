@@ -10,3 +10,18 @@ Total de tabuleiros no dataset final: 616
   tem_jogo: 200
   x_venceu: 200
   empate: 16
+
+--- Observação importante da Etapa 5 (treino dos modelos) ---
+Na abordagem2 (7 features de alto nível), TODOS os 5 algoritmos erraram
+exatamente os mesmos 4 tabuleiros de teste (3 empates classificados como
+"x_venceu" e 1 "tem_jogo" classificado como "x_venceu"). Isso não é
+coincidência nem bug: as features "linhas_2x_32"/"linhas_2o_32" (como
+especificadas no enunciado) contam linhas com 2 marcas + 1 vazio, mas
+NÃO existe nenhuma feature que informe diretamente "há uma linha
+COMPLETA (3 em linha)". Ou seja, o conjunto de 7 features do enunciado
+não é suficiente, por construção, para diferenciar com 100% de certeza
+um tabuleiro em que X já venceu de um tabuleiro cheio (empate) ou quase
+cheio com a mesma contagem de X/O/vazios e mesma quantidade de "quase-
+linhas". Isso explica por que a acurácia empaca em 96,77% (120/124) em
+todos os algoritmos dessa abordagem, e é um ponto relevante para a
+seção de "dificuldades encontradas" do relatório.
