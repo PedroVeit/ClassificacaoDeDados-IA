@@ -128,6 +128,50 @@ def jogada_aleatoria_32(tabuleiro_32, rng_32=random):
     return novo_32
 
 
+def _coord_para_indice_32(r_32, c_32):
+    return r_32 * 3 + c_32
+
+
+def _indice_para_coord_32(i_32):
+    return divmod(i_32, 3)
+
+
+def rotaciona_90_32(tabuleiro_32):
+    """Rotaciona o tabuleiro 90 graus no sentido horário."""
+    novo_32 = [None] * 9
+    for i_32 in range(9):
+        r_32, c_32 = _indice_para_coord_32(i_32)
+        novo_r_32, novo_c_32 = c_32, 2 - r_32
+        novo_32[_coord_para_indice_32(novo_r_32, novo_c_32)] = tabuleiro_32[i_32]
+    return tuple(novo_32)
+
+
+def espelha_horizontal_32(tabuleiro_32):
+    """Espelha o tabuleiro na horizontal (esquerda-direita)."""
+    novo_32 = [None] * 9
+    for i_32 in range(9):
+        r_32, c_32 = _indice_para_coord_32(i_32)
+        novo_32[_coord_para_indice_32(r_32, 2 - c_32)] = tabuleiro_32[i_32]
+    return tuple(novo_32)
+
+
+def gera_simetrias_32(tabuleiro_32):
+    """
+    Retorna o conjunto (sem repetição) das 8 simetrias do grupo diedral
+    D4 de um tabuleiro: 4 rotações x {original, espelhado}.
+    Usado para AUMENTAR (data augmentation) classes raras (ex.: empates),
+    já que uma simetria de um tabuleiro terminal válido também é um
+    tabuleiro terminal válido com o mesmo rótulo de classe.
+    """
+    simetrias_32 = set()
+    atual_32 = tuple(tabuleiro_32)
+    for _ in range(4):
+        atual_32 = rotaciona_90_32(atual_32)
+        simetrias_32.add(atual_32)
+        simetrias_32.add(espelha_horizontal_32(atual_32))
+    return simetrias_32
+
+
 def tabuleiro_para_texto_32(tabuleiro_32):
     """Representação visual 3x3 de um tabuleiro para o front end em modo texto."""
     simb_32 = {"x": "X", "o": "O", "b": " "}

@@ -1,0 +1,12 @@
+Tabuleiros carregados do dataset bruto da UCI: 958
+  Reclassificados como 'x_venceu': 626
+  Reclassificados como 'o_venceu': 316
+  Reclassificados como 'empate': 16
+  'empate' ampliado por simetrias D4: 16 -> 16 tabuleiros únicos (o total permaneceu 16: é um fato conhecido de combinatória do jogo da velha que existem exatamente 16 tabuleiros de empate possíveis no total, formando apenas 2 classes de simetria D4 (2 x 8 = 16); logo os 16 do dataset bruto da UCI já são TODOS os empates que existem, e a classe 'empate' fica com apenas 16/200 exemplos mesmo após a tentativa de aumento de dados - limitação do problema, não do processo)
+  'tem_jogo' gerado sinteticamente: 200
+
+Total de tabuleiros no dataset final: 616
+  o_venceu: 200
+  tem_jogo: 200
+  x_venceu: 200
+  empate: 16
