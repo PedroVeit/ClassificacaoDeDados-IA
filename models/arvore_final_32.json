@@ -1,0 +1,272 @@
+{
+ "colunas": [
+  "qtd_x_32",
+  "qtd_o_32",
+  "qtd_ocupadas_32",
+  "linhas_2x_32",
+  "linhas_2o_32",
+  "qtd_vazias_32",
+  "jogador_vez_32"
+ ],
+ "nos": [
+  {
+   "feature": 6,
+   "limiar": 0.5,
+   "esquerda": 1,
+   "direita": 14,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": 0,
+   "limiar": 2.5,
+   "esquerda": 2,
+   "direita": 3,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": 3,
+   "limiar": 1.5,
+   "esquerda": 4,
+   "direita": 13,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": 4,
+   "limiar": 1.5,
+   "esquerda": 5,
+   "direita": 12,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": 0,
+   "limiar": 3.5,
+   "esquerda": 6,
+   "direita": 11,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": 4,
+   "limiar": 0.5,
+   "esquerda": 7,
+   "direita": 10,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": 3,
+   "limiar": 0.5,
+   "esquerda": 8,
+   "direita": 9,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "o_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": 1,
+   "limiar": 1.5,
+   "esquerda": 15,
+   "direita": 16,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": 2,
+   "limiar": 8.0,
+   "esquerda": 17,
+   "direita": 36,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 5,
+   "limiar": 3.0,
+   "esquerda": 18,
+   "direita": 31,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 3,
+   "limiar": 2.5,
+   "esquerda": 19,
+   "direita": 30,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 3,
+   "limiar": 1.5,
+   "esquerda": 20,
+   "direita": 27,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 4,
+   "limiar": 0.5,
+   "esquerda": 21,
+   "direita": 24,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 3,
+   "limiar": 0.5,
+   "esquerda": 22,
+   "direita": 23,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 3,
+   "limiar": 0.5,
+   "esquerda": 25,
+   "direita": 26,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 4,
+   "limiar": 0.5,
+   "esquerda": 28,
+   "direita": 29,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": 3,
+   "limiar": 0.5,
+   "esquerda": 32,
+   "direita": 35,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": 4,
+   "limiar": 0.5,
+   "esquerda": 33,
+   "direita": 34,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "tem_jogo"
+  },
+  {
+   "feature": null,
+   "limiar": null,
+   "esquerda": null,
+   "direita": null,
+   "classe": "x_venceu"
+  }
+ ]
+}
