@@ -27,8 +27,7 @@ import os
 import random
 import sys
 
-import joblib
-import pandas as pd
+import json
 
 sys.path.insert(0, os.path.dirname(__file__))
 from logica_jogo_32 import (  # noqa: E402
@@ -38,6 +37,7 @@ from logica_jogo_32 import (  # noqa: E402
 from preprocessamento_32 import extrai_features_abordagem2_32  # noqa: E402
 
 CAMINHO_MODELO_32 = os.path.join(os.path.dirname(__file__), "..", "models", "modelo_final_32.joblib")
+CAMINHO_JSON_32 = os.path.join(os.path.dirname(__file__), "..", "models", "arvore_final_32.json")
 CAMINHO_LOG_32 = os.path.join(os.path.dirname(__file__), "..", "reports", "log_interacoes_frontend_32.csv")
 
 MENSAGENS_32 = {
@@ -48,16 +48,43 @@ MENSAGENS_32 = {
 }
 
 
+def carrega_arvore_json_32():
+    """Árvore de Decisão final exportada em JSON (não depende de scikit-learn/scipy)."""
+    with open(CAMINHO_JSON_32, encoding="utf-8") as arq_32:
+        dados_32 = json.load(arq_32)
+    return {"tipo": "json", "nos": dados_32["nos"]}, dados_32["colunas"]
+
+
 def carrega_modelo_32():
-    pacote_32 = joblib.load(CAMINHO_MODELO_32)
-    return pacote_32["modelo_32"], pacote_32["colunas_32"]
+    """Tenta o modelo scikit-learn (.joblib); se não der (ex.: DLL bloqueada), usa o JSON."""
+    try:
+        import joblib
+        pacote_32 = joblib.load(CAMINHO_MODELO_32)
+        return pacote_32["modelo_32"], pacote_32["colunas_32"]
+    except Exception as erro_32:
+        print(f"[aviso] scikit-learn indisponível ({type(erro_32).__name__}); "
+              "usando a mesma árvore de decisão exportada em JSON.")
+        return carrega_arvore_json_32()
+
+
+def prediz_arvore_json_32(arvore_32, feats_32):
+    no_32 = 0
+    while arvore_32["nos"][no_32]["feature"] is not None:
+        atual_32 = arvore_32["nos"][no_32]
+        if feats_32[atual_32["feature"]] <= atual_32["limiar"]:
+            no_32 = atual_32["esquerda"]
+        else:
+            no_32 = atual_32["direita"]
+    return arvore_32["nos"][no_32]["classe"]
 
 
 def prediz_estado_32(modelo_32, colunas_32, tabuleiro_32):
     feats_32 = extrai_features_abordagem2_32(tabuleiro_32)
+    if isinstance(modelo_32, dict):
+        return prediz_arvore_json_32(modelo_32, feats_32)
+    import pandas as pd
     linha_32 = pd.DataFrame([feats_32], columns=colunas_32)
-    predicao_32 = modelo_32.predict(linha_32)[0]
-    return predicao_32
+    return modelo_32.predict(linha_32)[0]
 
 
 def pede_jogada_humana_32(tabuleiro_32):
