@@ -33,8 +33,8 @@ EMPATE_32 = "empate"
 
 def checa_vencedor_32(tabuleiro_32, simbolo_32):
     """Retorna True se `simbolo_32` ('x' ou 'o') tem 3 em linha em tabuleiro_32."""
-    for a, b, c in LINHAS_VENCEDORAS_32:
-        if tabuleiro_32[a] == tabuleiro_32[b] == tabuleiro_32[c] == simbolo_32:
+    for a_32, b_32, c_32 in LINHAS_VENCEDORAS_32:
+        if tabuleiro_32[a_32] == tabuleiro_32[b_32] == tabuleiro_32[c_32] == simbolo_32:
             return True
     return False
 
@@ -95,7 +95,7 @@ def gera_tabuleiro_tem_jogo_aleatorio_32(rng_32, n_min_jogadas_32=0, n_max_jogad
     aleatórias e para em um ponto aleatório da partida, desde que ainda
     não tenha vencedor nem tabuleiro cheio.
     """
-    for _ in range(200):  # tentativas
+    for _tentativa_32 in range(200):  # tentativas
         tabuleiro_32 = ["b"] * CASAS_32
         casas_livres_32 = list(range(CASAS_32))
         random.Random(rng_32.random()).shuffle(casas_livres_32)
@@ -119,7 +119,7 @@ def gera_tabuleiro_tem_jogo_aleatorio_32(rng_32, n_min_jogadas_32=0, n_max_jogad
 
 def jogada_aleatoria_32(tabuleiro_32, rng_32=random):
     """Escolhe uma casa vazia aleatória para o jogador da vez. Retorna novo tabuleiro (lista)."""
-    casas_vazias_32 = [i for i, v in enumerate(tabuleiro_32) if v == "b"]
+    casas_vazias_32 = [i_32 for i_32, v_32 in enumerate(tabuleiro_32) if v_32 == "b"]
     if not casas_vazias_32:
         return None
     pos_32 = rng_32.choice(casas_vazias_32)
@@ -165,7 +165,7 @@ def gera_simetrias_32(tabuleiro_32):
     """
     simetrias_32 = set()
     atual_32 = tuple(tabuleiro_32)
-    for _ in range(4):
+    for _rotacao_32 in range(4):
         atual_32 = rotaciona_90_32(atual_32)
         simetrias_32.add(atual_32)
         simetrias_32.add(espelha_horizontal_32(atual_32))
@@ -176,7 +176,7 @@ def tabuleiro_para_texto_32(tabuleiro_32):
     """Representação visual 3x3 de um tabuleiro para o front end em modo texto."""
     simb_32 = {"x": "X", "o": "O", "b": " "}
     linhas_32 = []
-    for i in range(0, 9, 3):
-        linha_32 = " | ".join(simb_32[c] for c in tabuleiro_32[i:i + 3])
+    for i_32 in range(0, 9, 3):
+        linha_32 = " | ".join(simb_32[c_32] for c_32 in tabuleiro_32[i_32:i_32 + 3])
         linhas_32.append(linha_32)
     return "\n---------\n".join(linhas_32)

@@ -149,7 +149,7 @@ def main_32():
 
     linhas_log_32.append(f"\nTotal de tabuleiros no dataset final: {len(conjunto_final_32)}")
     contagem_final_32 = {}
-    for _, classe_32, _ in conjunto_final_32:
+    for _tab_32, classe_32, _origem_32 in conjunto_final_32:
         contagem_final_32[classe_32] = contagem_final_32.get(classe_32, 0) + 1
     for classe_32, qtd_32 in contagem_final_32.items():
         linhas_log_32.append(f"  {classe_32}: {qtd_32}")
